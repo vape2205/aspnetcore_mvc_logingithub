@@ -1,0 +1,15 @@
+services:
+  # Servicio de pruebas
+  app:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: app-login-externo
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+      Auth-Settings__Github__ClientId: ${GITHUB_CLIENTID}
+      Auth-Settings__Github__ClientSecret: ${GITHUB_CLIENTSECRET}
+    ports:
+      - "${APP_PORT}:5000"
+
+  
