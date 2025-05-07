@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["loginexterno/loginexterno.csproj", "loginexterno/"]
-RUN dotnet restore "./loginexterno/loginexterno.csproj"
+COPY ["./loginexterno.csproj", "app/"]
+RUN dotnet restore "./app/loginexterno.csproj"
 COPY . .
-WORKDIR "/src/loginexterno"
+WORKDIR "/src"
 RUN dotnet build "./loginexterno.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase se usa para publicar el proyecto de servicio que se copiará en la fase final.
