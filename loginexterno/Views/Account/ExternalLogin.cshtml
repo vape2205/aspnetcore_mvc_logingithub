@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Github login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h4>Login</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+    	@if (TempData["UserLoginFailed"] != null)
+    	{
+        	<p class="alert alert-danger">@TempData["UserLoginFailed"]</p>
+    	}
+
+        <form asp-controller="Account" asp-action="ExternalLogin">
+        	<div class="form-group mt-2">
+            	<input type="submit" value="Login Github" class="btn btn-primary" />
+        	</div>
+    	</form>
+	</div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
